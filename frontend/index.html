@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SIH26044 — Real AI-Powered Skill Intelligence & Matching Platform</title>
+  <meta name="description" content="Closed-loop national skill intelligence, adaptive proficiency calculation, and AI-powered role matching platform." />
+  
+  <!-- Google Fonts: Inter & Outfit -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Outfit:wght@500;600;700;800&display=swap" rel="stylesheet" />
+  
+  <!-- Font Awesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+  
+  <!-- Chart.js -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+  
+  <!-- Clean SaaS Stylesheet -->
+  <link rel="stylesheet" href="/static/css/main.css" />
+</head>
+<body>
+
+  <!-- Authentication Gate: shown until a valid user session is available -->
+  <section id="auth-screen" class="auth-screen" aria-labelledby="auth-title">
+    <div class="auth-hero">
+      <div class="auth-brand">
+        <div class="brand-logo-icon"><i class="fa-solid fa-layer-group"></i></div>
+        <span>SkillIntel</span>
+      </div>
+      <div class="auth-hero-copy">
+        <span class="auth-eyebrow">SIH26044 PLATFORM</span>
+        <h1>Turn skills into the right opportunities.</h1>
+        <p>One secure platform for students, recruiters, institutions, and national skill intelligence.</p>
+      </div>
+      <div class="auth-points">
+        <span><i class="fa-solid fa-circle-check"></i> Verified skill profiles</span>
+        <span><i class="fa-solid fa-circle-check"></i> AI-powered role matching</span>
+        <span><i class="fa-solid fa-circle-check"></i> Secure role-based dashboards</span>
+      </div>
+    </div>
+
+    <div class="auth-panel">
+      <div class="auth-card">
+        <div class="auth-card-heading">
+          <h2 id="auth-title">Welcome back</h2>
+          <p id="auth-subtitle">Sign in to open your dashboard.</p>
+        </div>
+        <div class="auth-tabs" role="tablist">
+          <button class="auth-tab active" type="button" data-auth-mode="login">Sign in</button>
+          <button class="auth-tab" type="button" data-auth-mode="signup">Create account</button>
+        </div>
+
+        <form id="login-form" class="auth-form" novalidate>
+          <label for="login-email">Email address</label>
+          <input id="login-email" class="form-control" type="email" autocomplete="email" required placeholder="you@example.com" />
+          <label for="login-password">Password</label>
+          <input id="login-password" class="form-control" type="password" autocomplete="current-password" required minlength="6" placeholder="Enter your password" />
+          <p id="login-error" class="auth-error" role="alert"></p>
+          <button class="btn btn-primary auth-submit" type="submit"><i class="fa-solid fa-right-to-bracket"></i> Sign in</button>
+        </form>
+
+        <form id="signup-form" class="auth-form" hidden novalidate>
+          <label for="signup-name">Full name</label>
+          <input id="signup-name" class="form-control" type="text" autocomplete="name" required minlength="2" placeholder="Your full name" />
+          <label for="signup-email">Email address</label>
+          <input id="signup-email" class="form-control" type="email" autocomplete="email" required placeholder="you@example.com" />
+          <label for="signup-role">I am joining as a</label>
+          <select id="signup-role" class="form-control" required>
+            <option value="STUDENT">Student</option>
+            <option value="RECRUITER">Recruiter</option>
+            <option value="INSTITUTION">Institution / TPO</option>
+          </select>
+          <label for="signup-password">Password</label>
+          <input id="signup-password" class="form-control" type="password" autocomplete="new-password" required minlength="6" placeholder="At least 6 characters" />
+          <label for="signup-confirm-password">Confirm password</label>
+          <input id="signup-confirm-password" class="form-control" type="password" autocomplete="new-password" required minlength="6" placeholder="Repeat your password" />
+          <p id="signup-error" class="auth-error" role="alert"></p>
+          <button class="btn btn-primary auth-submit" type="submit"><i class="fa-solid fa-user-plus"></i> Create account</button>
+        </form>
+
+        <details class="demo-accounts">
+          <summary>Need a demo account?</summary>
+          <p>Student: <code>student@sih.gov.in</code> / <code>Student@123</code></p>
+          <p>Other demo credentials are in the README.</p>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <div id="app-layout">
+    <!-- Sidebar Navigation -->
+    <aside id="sidebar">
+      <div class="brand-header">
+        <div class="brand-logo-icon">
+          <i class="fa-solid fa-layer-group"></i>
+        </div>
+        <div class="brand-text">
+          <h1>SkillIntel</h1>
+          <span>SIH26044 Platform</span>
+        </div>
+      </div>
+
+      <!-- Active Portal Indicator Pill -->
+      <div id="sidebar-portal-badge" class="portal-badge student">
+        STUDENT PORTAL
+      </div>
+
+      <!-- Role-Specific Dynamic Navigation Menu -->
+      <ul class="nav-menu" id="sidebar-nav-menu">
+        <!-- Injected dynamically based on active role -->
+      </ul>
+
+      <div class="sidebar-footer">
+        <div class="platform-info-text">
+          <i class="fa-solid fa-circle-check" style="color:var(--success);"></i>
+          <span>AI Engine Connected</span>
+        </div>
+      </div>
+    </aside>
+
+    <!-- Main Content Area -->
+    <main id="main-content">
+      <!-- Topbar Header -->
+      <header id="topbar">
+        <div class="topbar-left">
+          <div class="page-title">
+            <h2 id="page-main-title">Student Dashboard</h2>
+            <p id="page-sub-title">Track your skills, discover suitable roles, and improve your career readiness.</p>
+          </div>
+        </div>
+
+        <div class="topbar-right">
+          <div class="account-actions">
+            <span id="current-user-name" class="current-user-name"></span>
+            <button class="btn btn-sm btn-secondary" id="btn-logout" type="button">
+              <i class="fa-solid fa-arrow-right-from-bracket"></i> Log out
+            </button>
+          </div>
+
+          <!-- Notification Bell -->
+          <div style="position:relative;">
+            <button class="icon-btn" id="btn-notifications-bell" title="Notifications">
+              <i class="fa-solid fa-bell"></i>
+              <span class="notif-badge" id="notif-badge-count" style="display:none;">0</span>
+            </button>
+            <div id="notifications-dropdown" style="display:none; position:absolute; top:44px; right:0; width:320px; background:#FFFFFF; border:1px solid var(--border-light); border-radius:var(--radius-md); box-shadow:var(--shadow-dropdown); z-index:50; overflow:hidden;">
+              <div style="padding:10px 14px; border-bottom:1px solid var(--border-light); font-weight:700; font-size:0.82rem; color:var(--text-primary); display:flex; justify-content:space-between; align-items:center; background:var(--bg-subtle);">
+                <span>Event Notifications</span>
+                <span class="badge badge-info" style="font-size:0.65rem;">Live</span>
+              </div>
+              <div id="notifications-list-container" style="max-height:280px; overflow-y:auto;"></div>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <!-- Viewport Display Container -->
+      <div id="viewport-container">
+        <!-- Rendered dynamically by active portal module -->
+      </div>
+    </main>
+  </div>
+
+  <!-- Floating AI Assistant Button -->
+  <button id="ai-assistant-fab">
+    <i class="fa-solid fa-wand-magic-sparkles"></i>
+    <span>AI Skill Assistant</span>
+  </button>
+
+  <!-- Slide-Out AI Assistant Drawer -->
+  <aside id="ai-assistant-drawer">
+    <div class="drawer-header">
+      <div style="display:flex; align-items:center; gap:10px;">
+        <div style="width:32px; height:32px; border-radius:var(--radius-sm); background:var(--primary); display:flex; align-items:center; justify-content:center; color:white; font-size:0.95rem;">
+          <i class="fa-solid fa-brain"></i>
+        </div>
+        <div>
+          <h3 style="font-size:0.95rem; font-weight:700; color:var(--text-primary);">AI Skill Intelligence</h3>
+          <span style="font-size:0.68rem; color:var(--text-muted); font-weight:500;">Real-time Telemetry Connected</span>
+        </div>
+      </div>
+      <button class="btn btn-sm btn-secondary" id="btn-close-ai-drawer"><i class="fa-solid fa-xmark"></i></button>
+    </div>
+
+    <div class="drawer-messages" id="ai-drawer-messages">
+      <div class="chat-bubble bot">
+        Hello! I am your <strong>AI Skill Intelligence Assistant</strong>. You can ask me about skill proficiencies, gap explanations, job matching calculations, or launch workshops and opportunities.
+      </div>
+    </div>
+
+    <!-- Quick Action Chips -->
+    <div class="chip-prompts">
+      <button class="prompt-chip">💡 Why is my Ashwagandha 82%?</button>
+      <button class="prompt-chip">🎯 Missing skills for AYUSH Quality Analyst?</button>
+      <button class="prompt-chip">📊 Largest gap in 2nd Year Dravyaguna?</button>
+      <button class="prompt-chip">⚡ Create AYUSH GMP workshop</button>
+    </div>
+
+    <div class="drawer-footer">
+      <input type="text" id="ai-chat-input" class="form-control" placeholder="Ask about medicines, gaps, or opportunities..." />
+      <button class="btn btn-primary" id="btn-ai-send"><i class="fa-solid fa-paper-plane"></i></button>
+    </div>
+  </aside>
+
+  <!-- Global Modal Overlay -->
+  <div class="modal-overlay" id="modal-overlay">
+    <div id="modal-container">
+      <!-- Modal card content injected dynamically -->
+    </div>
+  </div>
+
+  <!-- Toast Notification Container -->
+  <div id="toast-container"></div>
+
+  <!-- Application Entry Point -->
+  <script type="module" src="/static/js/app.js"></script>
+</body>
+</html>
